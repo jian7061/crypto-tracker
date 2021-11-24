@@ -5,7 +5,7 @@ export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/:coinID" element={<Coin />} />
+        <Route path="/:coinID/*" element={<Coin />} />
         <Route path="/" element={<Coins />} />
       </Routes>
     </BrowserRouter>
