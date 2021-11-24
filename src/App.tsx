@@ -30,7 +30,10 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
+  font-weight: 300;
 	line-height: 1;
+  color:${(props) => props.theme.textColor};
+  line-height: 1.2;
 }
 ol, ul {
 	list-style: none;
