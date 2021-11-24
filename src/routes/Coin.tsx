@@ -1,13 +1,39 @@
-import { useParams } from "react-router";
+import { useState } from "react";
+import { useLocation } from "react-router";
+import styled from "styled-components";
 
-interface RouteParams {
-  coinID: string;
-}
+const Title = styled.h1`
+  font-size: 48px;
+  color: ${(props) => props.theme.accentColor};
+`;
+
+const Loader = styled.span`
+  text-align: center;
+  display: block;
+`;
+
+const Container = styled.div`
+  padding: 0px 20px;
+  max-width: 480px;
+  margin: 0 auto;
+`;
+
+const Header = styled.header`
+  height: 15vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export default function Coin() {
-  const params = useParams() as RouteParams;
-  const coinID = params.coinID;
-  console.log(params);
-  console.log(params.coinID);
-  return <div>coin:{coinID}</div>;
+  const [loading, setLoading] = useState(true);
+  const { state } = useLocation();
+  return (
+    <Container>
+      <Header>
+        <Title>{state?.name || "Loading..."}</Title>
+      </Header>
+      {loading ? <Loader>Loading...</Loader> : null}
+    </Container>
+  );
 }
