@@ -1,6 +1,26 @@
 import { useQuery } from "react-query";
 import { fetchCoinHistory } from "../api";
 import ApexChart from "react-apexcharts";
+import styled, { keyframes } from "styled-components";
+
+const comeupAnimation = keyframes`
+  0% {
+    transform: none;
+    opacity: 0;
+  }
+  1% {
+    transform: translateY(-5px);
+    opacity: 0;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+`;
+
+const Container = styled.div`
+  animation: ${comeupAnimation} 0.5s linear forwards;
+`;
 
 interface IHistorical {
   time_open: string;
@@ -21,7 +41,7 @@ export default function Chart({ coinID }: ChartProps) {
     fetchCoinHistory(coinID)
   );
   return (
-    <div>
+    <Container>
       {isLoading ? (
         "Loading chart..."
       ) : (
@@ -73,6 +93,6 @@ export default function Chart({ coinID }: ChartProps) {
           }}
         />
       )}
-    </div>
+    </Container>
   );
 }

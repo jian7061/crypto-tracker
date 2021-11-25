@@ -188,7 +188,7 @@ export default function Coin() {
             </Tab>
           </Tabs>
           <Routes>
-            <Route path={`price`} element={<Price />} />
+            <Route path={`price`} element={<Price coinID={coinID} />} />
             <Route path={`chart`} element={<Chart coinID={coinID} />} />
           </Routes>
         </>
